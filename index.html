@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackyBag — Smart Bag. Safe Steps.</title>
+<meta name="description" content="GPS-enabled smart backpacks for kids aged 4–15.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101744;--pink:#f52f86;--purple:#6b45d8;--lav:#f0eaff;--blue:#e7f5ff;--green:#58bd71;--text:#171b45;--muted:#62677d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;color:var(--text);background:#fff}
+a{text-decoration:none;color:inherit}
+.top{background:var(--navy);color:#fff;padding:8px 5%;font-size:12px;display:flex;justify-content:center;gap:38px}
+.top .social{position:absolute;right:5%;display:flex;gap:14px}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 16px #15183b10}
+.logo{font-family:"Baloo 2";font-size:31px;font-weight:800;color:var(--navy)}
+.logo span{color:var(--pink)}
+.logo small{display:block;font:600 9px Poppins;color:#596079;margin-top:-8px}
+.links{display:flex;gap:28px;font-size:14px;font-weight:600}
+.links a:hover,.links a.active{color:var(--pink)}
+.nav-actions{display:flex;gap:18px;font-size:21px}
+.hero{background:linear-gradient(120deg,#f2ebff,#eaf7ff);min-height:560px;padding:70px 7%;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;overflow:hidden;position:relative}
+.hero:before{content:"✦";position:absolute;left:5%;top:30px;font-size:55px;color:#b88df7}
+.hero h1{font:800 clamp(46px,5vw,72px)/.92 "Baloo 2";max-width:560px}
+.hero h1 span{color:var(--pink)}
+.hero p{font-size:18px;margin:22px 0;color:#34395a;max-width:480px}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.badges span{background:#fff;padding:8px 12px;border-radius:30px;font-size:11px;font-weight:600;box-shadow:0 5px 20px #5545a218}
+.btn{display:inline-block;padding:13px 24px;border-radius:28px;font-weight:700;font-size:14px;margin-right:10px}
+.primary{background:linear-gradient(90deg,#ff3b8d,#e92878);color:#fff;box-shadow:0 8px 20px #ed2f7c44}
+.secondary{border:2px solid var(--navy);background:#fff}
+.hero-art{position:relative;text-align:center}
+.bag{width:min(390px,80%);margin:auto;background:linear-gradient(145deg,#18264e,#07142f);border-radius:35px 35px 55px 55px;height:390px;box-shadow:0 30px 55px #14245a44;position:relative}
+.bag:before{content:"";position:absolute;width:180px;height:80px;border:16px solid #6d7d9f;border-bottom:0;border-radius:100px 100px 0 0;left:90px;top:-55px}
+.pocket{position:absolute;border:4px solid #a8df25;border-radius:12px;height:70px;width:220px;left:85px;top:115px}
+.pocket.two{top:205px;width:170px;left:110px}
+.gps-dot{position:absolute;left:165px;top:290px;width:62px;height:62px;border-radius:50%;background:#111d3b;border:5px solid #fff;box-shadow:0 0 0 5px #42a8ff44;color:#fff;display:grid;place-items:center;font-size:28px}
+.phone{position:absolute;right:0;bottom:10px;width:170px;height:310px;border:9px solid #101526;border-radius:28px;background:#fff;box-shadow:0 20px 40px #16214b55;padding:15px}
+.map{height:100%;border-radius:17px;background:linear-gradient(135deg,#dff3dc 20%,#d7e8fa 20% 55%,#f9efd2 55%);position:relative;overflow:hidden}
+.map:before{content:"";position:absolute;left:35px;top:55px;width:90px;height:170px;border-left:5px solid #fff;border-right:5px solid #fff;transform:rotate(25deg)}
+.pin{position:absolute;left:62px;top:105px;background:var(--pink);color:#fff;border-radius:50% 50% 50% 0;width:38px;height:38px;transform:rotate(-45deg);display:grid;place-items:center}
+.pin:after{content:"";width:12px;height:12px;background:#fff;border-radius:50%}
+.age{position:absolute;right:12%;top:45px;background:#fff;border-radius:50%;width:95px;height:95px;display:grid;place-items:center;text-align:center;font-weight:700;box-shadow:0 12px 30px #3f34852b}.age b{font-size:24px;color:var(--pink);display:block}
+.features{margin:-35px auto 45px;position:relative;z-index:3;width:88%;background:#fff;border-radius:22px;padding:25px;display:grid;grid-template-columns:repeat(5,1fr);box-shadow:0 12px 35px #17204b18}
+.feature{text-align:center;padding:8px 14px;border-right:1px solid #eee}.feature:last-child{border:0}.icon{font-size:28px}.feature b{display:block;font-size:13px;margin-top:5px}.feature small{font-size:10px;color:var(--muted)}
+section{padding:35px 7% 70px}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:25px}
+.section-title h2{font:800 35px "Baloo 2"}.section-title h2 span{color:var(--pink)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{border:1px solid #e6e6ee;border-radius:17px;overflow:hidden;background:#fff;transition:.25s}.card:hover{transform:translateY(-6px);box-shadow:0 15px 35px #1d27521a}
+.product-img{height:245px;display:grid;place-items:center;font-size:100px;background:linear-gradient(135deg,#f7edff,#eaf6ff);position:relative}
+.product-img.pink{background:linear-gradient(135deg,#ffe8f2,#dff7ff)}.product-img.dark{background:linear-gradient(135deg,#e8edf8,#d5d8e2)}
+.new{position:absolute;top:12px;left:12px;background:var(--pink);color:#fff;padding:4px 9px;border-radius:8px;font-size:10px;font-weight:700}
+.card-body{padding:14px}.card-body h3{font:700 20px "Baloo 2"}.card-body p{font-size:11px;color:var(--muted)}.price{font-weight:700;margin:8px 0}.stars{color:#f52f86;font-size:13px}
+.instagram{background:#faf8ff}.insta-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.insta{height:180px;border-radius:16px;display:flex;align-items:end;padding:13px;color:#fff;font-weight:700;font-size:13px;overflow:hidden;position:relative;background:linear-gradient(145deg,#c8e6ff,#7d61d8 55%,#f52f86)}.insta:nth-child(2){background:linear-gradient(145deg,#b6d7e9,#5c7c91,#e78fba)}.insta:nth-child(3){background:linear-gradient(145deg,#7fcf7d,#315a92,#16204c)}.insta:nth-child(4){background:linear-gradient(145deg,#9dd8ff,#fff,#f4b8d5);color:var(--navy)}.insta:nth-child(5){background:linear-gradient(145deg,#101a3c,#243d76,#6b45d8)}
+.news{margin:20px 7% 0;padding:28px 5%;border-radius:22px;background:linear-gradient(90deg,#5742d7,#aa42bb);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:25px}.news h2{font:700 28px "Baloo 2"}.news form{display:flex;background:#fff;border-radius:30px;padding:4px;min-width:390px}.news input{border:0;outline:0;padding:10px 15px;flex:1;border-radius:30px}.news button{border:0;background:var(--pink);color:#fff;border-radius:25px;padding:10px 20px;font-weight:700}
+footer{margin-top:35px;background:var(--navy);color:#fff;padding:50px 7% 25px;display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:30px}footer h4{margin-bottom:14px;color:#fff}footer a,footer p{display:block;color:#cdd2e8;font-size:12px;margin:8px 0}.copy{grid-column:1/-1;border-top:1px solid #ffffff22;padding-top:18px;font-size:11px;color:#aeb5d2}
+@media(max-width:900px){.links{display:none}.hero{grid-template-columns:1fr;text-align:center}.hero p{margin:20px auto}.badges{justify-content:center}.features{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.insta-grid{grid-template-columns:repeat(2,1fr)}.news{flex-direction:column;align-items:stretch}.news form{min-width:0}footer{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.top{gap:8px;font-size:9px}.hero{padding:45px 5%}.phone{width:125px;height:235px}.bag{height:300px}.pocket{left:55px;width:175px}.pocket.two{left:78px;width:140px}.gps-dot{left:120px;top:220px}.features,.products{grid-template-columns:1fr}.insta-grid{grid-template-columns:1fr 1fr}.insta{height:150px}.news{margin-left:5%;margin-right:5%}footer{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top"><span>🚚 Free Shipping on all orders</span><span>🛡️ 1 Year Warranty</span><span>↩ Easy Returns</span><div class="social">Follow us: <a href="https://www.instagram.com/" target="_blank">◎</a> <a href="#">f</a> <a href="#">▶</a></div></div>
+<nav>
+<a class="logo" href="#">📍 Tracky<span>Bag.</span><small>Smart Bag. Safer Childhood.</small></a>
+<div class="links"><a class="active" href="#home">Home</a><a href="#shop">Shop</a><a href="#gps">GPS Tracker</a><a href="#features">Features</a><a href="#about">About Us</a><a href="#blog">Blog</a><a href="#contact">Contact</a></div>
+<div class="nav-actions"><span>⌕</span><span>♙</span><span>🛍️<sup id="cartCount">0</sup></span></div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+<div>
+<h1>Smart Bag.<br>Safe Steps.<br><span>Happy Kids!</span></h1>
+<p>GPS-enabled backpacks designed for children aged <b>4 to 15</b> — helping parents stay connected while kids carry their style.</p>
+<a class="btn primary" href="#shop">Shop Now →</a><a class="btn secondary" href="#gps">Explore Features</a>
+<div class="badges"><span>⌖ Live GPS Tracking</span><span>🛡 Safe Zones</span><span>♧ SOS Alert</span><span>💧 Water Resistant</span></div>
+</div>
+<div class="hero-art">
+<div class="age">Age <b>4–15</b> Years</div>
+<div class="bag"><div class="pocket"></div><div class="pocket two"></div><div class="gps-dot">●</div></div>
+<div class="phone"><div class="map"><div class="pin"></div></div></div>
+</div>
+</section>
+
+<div class="features" id="features">
+<div class="feature"><div class="icon">📍</div><b>Real-Time GPS</b><small>Track in Real-Time</small></div>
+<div class="feature"><div class="icon">🛡️</div><b>Safe & Secure</b><small>Built for Safety</small></div>
+<div class="feature"><div class="icon">💧</div><b>Durable</b><small>Water Resistant</small></div>
+<div class="feature"><div class="icon">🎒</div><b>Stylish Designs</b><small>Kids Love to Carry</small></div>
+<div class="feature"><div class="icon">🔋</div><b>Long Battery Life</b><small>Stay Connected Longer</small></div>
+</div>
+
+<section id="shop">
+<div class="section-title"><h2>Our Collection</h2><a class="btn secondary" href="#shop">View All Products →</a></div>
+<div class="products">
+<article class="card"><div class="product-img pink"><span class="new">NEW</span>🦄</div><div class="card-body"><h3>Unicorn Dream</h3><p>For Age 4–8 Years</p><div class="price">₹3,499</div><div class="stars">★★★★★ <small>(128)</small></div><button class="btn primary add" style="border:0;margin-top:10px">Add to Bag</button></div></article>
+<article class="card"><div class="product-img"><span class="new">NEW</span>🚀</div><div class="card-body"><h3>Space Explorer</h3><p>For Age 6–12 Years</p><div class="price">₹3,699</div><div class="stars">★★★★★ <small>(96)</small></div><button class="btn primary add" style="border:0;margin-top:10px">Add to Bag</button></div></article>
+<article class="card"><div class="product-img dark"><span class="new">NEW</span>🎒</div><div class="card-body"><h3>Urban Champ</h3><p>For Age 8–15 Years</p><div class="price">₹3,999</div><div class="stars">★★★★★ <small>(84)</small></div><button class="btn primary add" style="border:0;margin-top:10px">Add to Bag</button></div></article>
+<article class="card"><div class="product-img"><span class="new">NEW</span>🌈</div><div class="card-body"><h3>Dream Pastel</h3><p>For Age 4–10 Years</p><div class="price">₹3,499</div><div class="stars">★★★★★ <small>(73)</small></div><button class="btn primary add" style="border:0;margin-top:10px">Add to Bag</button></div></article>
+</div>
+</section>
+
+<section class="instagram" id="about">
+<div class="section-title"><h2>From Our <span>Instagram</span></h2><a href="https://www.instagram.com/" target="_blank" class="btn secondary">◎ Follow Us</a></div>
+<div class="insta-grid">
+<a class="insta" href="https://www.instagram.com/" target="_blank">Safety, Style & Smiles! 💗</a>
+<a class="insta" href="https://www.instagram.com/" target="_blank">Adventure Starts Safe 🧭</a>
+<a class="insta" href="https://www.instagram.com/" target="_blank">Track Every Step 📍</a>
+<a class="insta" href="https://www.instagram.com/" target="_blank">Smart Bag, Happy Parent 👍</a>
+<a class="insta" href="https://www.instagram.com/" target="_blank">Always Connected ✨</a>
+</div>
+</section>
+
+<div class="news"><div><h2>Stay Updated with TrackyBag!</h2><p>Get the latest updates, offers & parenting tips.</p></div><form onsubmit="event.preventDefault();alert('Thanks for subscribing!')"><input type="email" required placeholder="Enter your email"><button>Subscribe</button></form></div>
+</main>
+
+<footer id="contact">
+<div><div class="logo" style="color:#fff">📍 Tracky<span>Bag.</span></div><p>GPS enabled backpacks for kids age 4 to 15. Because their safety is your peace of mind.</p><p>◎ Instagram &nbsp; f Facebook &nbsp; ▶ YouTube</p></div>
+<div><h4>Shop</h4><a href="#shop">All Products</a><a href="#shop">Best Sellers</a><a href="#shop">New Arrivals</a><a href="#shop">Accessories</a></div>
+<div><h4>Features</h4><a href="#gps">GPS Tracker</a><a href="#features">SOS Alert</a><a href="#features">Safe Zone</a><a href="#features">Route History</a></div>
+<div><h4>Company</h4><a id="blog" href="#about">About Us</a><a href="#about">Blog</a><a href="#contact">FAQs</a><a href="#contact">Contact Us</a></div>
+<div><h4>Support</h4><a href="#contact">Shipping & Delivery</a><a href="#contact">Returns & Refunds</a><a href="#contact">Terms & Conditions</a><a href="#contact">Privacy Policy</a></div>
+<div class="copy">© 2026 TrackyBag. All Rights Reserved. &nbsp; • &nbsp; Designed for smart, safe childhoods.</div>
+</footer>
+
+<script>
+let count=0;
+document.querySelectorAll('.add').forEach(btn=>btn.addEventListener('click',()=>{count++;document.getElementById('cartCount').textContent=count;btn.textContent='Added ✓';setTimeout(()=>btn.textContent='Add to Bag',1000)}));
+</script>
+</body>
+</html>
